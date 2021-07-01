@@ -3,11 +3,7 @@
 <br>
 <p align="center"><font size="+8"><strong>Lunar</strong></font></p>
 
-[__Discontinue/Frozen__] AntiCheat for PocketMine-MP API 3.0.0
-
-This project is in fast-development mode, anything may change.
-
-This anticheat is used in production server, but it is very deprecated to use.
+A light weight fork of Lunar Anticheat aim to my private use cases.
 
 ### Commands
 

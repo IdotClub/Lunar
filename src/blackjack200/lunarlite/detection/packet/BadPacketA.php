@@ -1,0 +1,25 @@
+<?php
+
+
+namespace blackjack200\lunarlite\detection\packet;
+
+
+use blackjack200\lunarlite\detection\DetectionBase;
+use pocketmine\network\mcpe\protocol\DataPacket;
+use pocketmine\network\mcpe\protocol\InventoryTransactionPacket;
+use pocketmine\network\mcpe\protocol\types\inventory\UseItemOnEntityTransactionData;
+
+class BadPacketA extends DetectionBase {
+	public function handleClient(DataPacket $packet) : void {
+		if (
+			$packet instanceof InventoryTransactionPacket &&
+			$packet->trData instanceof UseItemOnEntityTransactionData &&
+			$packet->trData->getEntityRuntimeId() === $this->getUser()->getPlayer()->getId()
+		) {
+			$this->addVL(1);
+			if ($this->overflowVL()) {
+				$this->fail('self-hit');
+			}
+		}
+	}
+}
